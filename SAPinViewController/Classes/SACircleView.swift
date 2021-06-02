@@ -90,7 +90,7 @@ class SACircleView: UIView {
                                     delay: TimeInterval(delay),
                                     usingSpringWithDamping: damping,
                                     initialSpringVelocity: velocity,
-                                    options: [getAnimationOptions(curve), UIViewAnimationOptions.allowUserInteraction],
+                                    options: [getAnimationOptions(curve), UIView.AnimationOptions.allowUserInteraction],
                                     animations: { [weak self] in
                                         if let _self = self
                                         {
@@ -118,8 +118,8 @@ class SACircleView: UIView {
             })
         
     }
-    func getAnimationOptions(_ curve: String) -> UIViewAnimationOptions {
-        return UIViewAnimationOptions.curveLinear
+    func getAnimationOptions(_ curve: String) -> UIView.AnimationOptions {
+        return UIView.AnimationOptions.curveLinear
     }
     func resetAllForBallView() {
         x = 0

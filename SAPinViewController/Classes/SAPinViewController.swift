@@ -254,7 +254,7 @@ open class SAPinViewController: UIViewController {
             })
         }
         view.addSubview(blurView)
-        view.bringSubview(toFront: blurView)
+        view.bringSubviewToFront(blurView)
         blurView.snp.makeConstraints { (make) in
             make.edges.equalTo(self.view)
         }
@@ -469,7 +469,7 @@ open class SAPinViewController: UIViewController {
             make.height.equalTo(44)
         }
     }
-    func cancelDeleteTap() {
+    @objc func cancelDeleteTap() {
         if cancelButton.titleLabel?.text == SAPinConstant.DeleteString {
             if tappedButtons.count > 0 {
                 circleViews[tappedButtons.count-1].animateTapEmpty()
@@ -486,7 +486,7 @@ open class SAPinViewController: UIViewController {
         return UIScreen.main.bounds.height == 480
     }
     fileprivate func setAttributedTitleForButtonWithTitle(_ title: String, font: UIFont, color: UIColor) {
-        cancelButton.setAttributedTitle(NSAttributedString(string: title, attributes: [NSFontAttributeName:font,NSForegroundColorAttributeName:color]), for: UIControlState())
+        cancelButton.setAttributedTitle(NSAttributedString(string: title, attributes: [NSAttributedString.Key.font: font, NSAttributedString.Key.foregroundColor: color]), for: UIControl.State())
     }
     fileprivate func pinErrorAnimate() {
         for item in circleViews {

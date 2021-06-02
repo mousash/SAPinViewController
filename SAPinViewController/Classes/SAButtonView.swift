@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol SAButtonViewDelegate: class {
+protocol SAButtonViewDelegate: AnyObject {
     
     func buttonTappedWithTag(_ tag: Int)
 }
@@ -160,13 +160,13 @@ class SAButtonView: UIView {
         btn.addTarget(self, action: #selector(self.btnDown), for: .touchDragEnter)
     }
     
-    func btnDown() {
+    @objc func btnDown() {
         UIView.animate(withDuration: 0.17, delay: 0, options: .curveEaseIn, animations: {
             self.backgroundColor = self.buttonBorderColor.withAlphaComponent(0.4)
         })
     }
     
-    func btnCancel() {
+    @objc func btnCancel() {
         UIView.animate(withDuration: 0.17, delay: 0, options: .curveEaseIn, animations: {
             UIView.animate(withDuration: 0.17, delay: 0.1, options: .curveEaseOut, animations: {
                 self.backgroundColor = UIColor.clear
@@ -174,7 +174,7 @@ class SAButtonView: UIView {
         })
     }
     
-    func btnTap() {
+    @objc func btnTap() {
         delegate?.buttonTappedWithTag(numberTag)
         UIView.animate(withDuration: 0.17, delay: 0, options: .curveEaseIn, animations: {
             self.backgroundColor = self.buttonBorderColor.withAlphaComponent(0.4)
